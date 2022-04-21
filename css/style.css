@@ -1,0 +1,71 @@
+
+header {
+  height: 80px;
+}
+main {
+  height: calc(100vh - 80px);
+  background-color: rgb(30, 27, 49);
+}
+.k_container{
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+}
+.main_container{
+  width: 500px;
+  height: 500px;
+  
+}
+
+.box-veryhard{
+ width: calc(100% / 10);
+ height: calc(100% / 10);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border: 2px solid white;
+ color:white;
+}
+ .box-hard{
+  width: calc(100% / 9);
+  height: calc(100% / 9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  color:white;
+ }
+
+ .box-easy{
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  color:white;
+ } 
+
+.box.clicked.odd{
+  background-color: brown;
+}
+.box.clicked.even{
+  background-color: rgb(52, 138, 128);
+}
+
+.box span{
+  display:none;
+}
+
+.box.clicked span{
+  display:block;
+}
+
+.inpt_right{
+  width: 300px;
+}
+
+.debug {
+  background-color: rgba(196, 77, 77, .5);
+} 
+
