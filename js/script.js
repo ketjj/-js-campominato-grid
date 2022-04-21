@@ -14,28 +14,38 @@ function init(){
 
 const container = document.querySelector('.main_container');
 
+// svuota container di tutte le celle
+while (container.firstChild) {
+  container.removeChild(container.lastChild);
+}
+
 const select = document.getElementById('inputGroupSelect04');
 let value = select.options[select.selectedIndex].value;
-console.log(value); // en
+console.log(value); 
 create(container, parseInt(value))
 }
  
 function create(element, numLoops){
   console.log("create");
   for(let i = 0; i < numLoops; i++){
-    createBox(element, numLoops)
+    createBox(element, numLoops, i+1)
   }
 }
 
-function createBox(element, numLoops) {
+function createBox(element1, numLoops1, num) {
+ 
   const box = document.createElement('div');
-  if( numLoops === 100)
-       box.className = 'box-veryhard';
-  else if( numLoops === 81)
+  box.addEventListener('click', function changeColor(){
+    box.classList.add('box-clicked');
+  })
+  box.innerHTML = num;
+  if( numLoops1 === 100)
+       box.className = 'box-easy';
+  else if( numLoops1 === 81)
        box.className = 'box-hard';
-  else if(numLoops === 49)
-       box.className = 'box-easy'; 
-  element.append(box);
+  else if(numLoops1 === 49)
+       box.className = 'box-veryhard'; 
+  element1.append(box);
 }
 
 
