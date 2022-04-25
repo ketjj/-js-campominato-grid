@@ -4,17 +4,13 @@
 // con difficoltà 3 => tra 1 e 49
 // Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro.
 
-
 const bombNumbers = 15;
+const listNumbers = [];
 
-const playButton = document.getElementById('btn-output').addEventListener('click', init);
-
-
-const select = document.getElementById('inputGroupSelect04');
-const value = select.options[select.selectedIndex].value;
+const playButton = document.getElementById('btn-output').addEventListener('click', play);
 
 
-function init(){
+function play(){
 
   const container = document.querySelector('.main_container');
 
@@ -23,70 +19,58 @@ function init(){
   container.removeChild(container.lastChild);
   }
 
-  create(container, parseInt(value));
-  const bombs = createBomb();
 
+  const select = document.getElementById('inputGroupSelect04');
+  value = select.options[select.selectedIndex].value;
+
+  create(container, parseInt(value))
+
+  randomNumber = uniqueRandomNUmber(1, numLoops1);
 }
 
-function create(element, numLoops, num){
+function create(element, numLoops1){
 
-  for(let i = 1; i <= numLoops; i++){
-    createBox(element, numLoops,num)
+  for(let i = 0; i < numLoops1; i++){
+    createBox(element, numLoops1, i+1)
   }
 }
 
-function createBox(element1, numLoops1, num) {
+function createBox(element1, numLoops1, number) {
   
   const box = document.createElement('div');
   
   box.addEventListener('click', function changeColor(){
     box.classList.add('box-clicked');
   })
-
-  num = getRandomNumber(1, numLoops1);
-  box.innerHTML = num;
   
-  if( numLoops1 === 100)
-  box.className = 'box-easy';
-  else if( numLoops1 === 81)
-  box.className = 'box-hard';
-  else if(numLoops1 === 49)
-  box.className = 'box-veryhard'; 
+  if( numLoops1 === 100) {
+    box.className = 'box-easy';
+    box.innerHTML = getRandomNumber(1, 100);
+  } else if( numLoops1 === 81){
+    box.className = 'box-hard';
+    box.innerHTML = getRandomNumber(1, 81);
+  } else if(numLoops1 === 49){
+    box.className = 'box-veryhard'; 
+    box.innerHTML = getRandomNumber(1, 49);
+  }
   element1.append(box);
 }
 
-// function createUniqueRandomNumbers(){
-//   let randomNumber;
-//   const maxLimit = value;
-//   const minLimit = 1;
-//   const uniqueRandomNumbers = [];
 
-//   while (uniqueRandomNumbers.length < maxLimit) {
-//     const randomNumbers = getRandomNumber(minLimit, maxLimit)
-//     if (uniqueRandomNumbers.indexOf(randomNumbers) == -1) { 
-       
-//       uniqueRandomNumbers.push( randomNumbers );
-//     }
-// }
-//   return randomNumber;
-// }
+function uniqueRandomNUmber(min, max){
+   let number, valid;
 
-
-function createBomb(){
-  const generateBombs = [];
-  
-  while(generateBombs.length < bombNumbers){
-    const bomb = getRandomNumber(1, bombNumbers);
-    
-    if(!generateBombs.includes(bomb)){
-      generateBombs.push(bomb)
+   while(!valid){
+     number = getRandomNumber(min, max);
+     while(!listNumbers.includes(number)){
+       valid = true;
+       listNumbers.push(number)
+      }
     }
+    return number;
   }
-  return generateBombs;
-}
+  
+  function getRandomNumber(min, max){
+   return Math.floor(Math.random() * (max - min +1) + min);
+  }
 
-// console.log(createBomb());
-
-function getRandomNumber(min,max){
-  return Math.floor(Math.random()* (max - min + 1) + min);
-}
