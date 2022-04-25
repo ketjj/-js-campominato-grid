@@ -12,28 +12,35 @@
 </head>
 <body>
   <header>
-    <div class="k_container">
-      <div class="container-fluid d-flex justify-content-end">
-        <div class="input-group mt-3 inpt_right">
+    <div class="k_container container-fluid d-flex justify-content-between">
+      <div class="logo">MINESWEEPER</div>
+      
+      <div class="input mt-3">
+        <div class="input-group  inpt_right">
+
           <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
             <option value="100">Easy</option>
             <option value="81">Hard</option>
             <option value="49">Very Hard</option>
           </select>
+          
           <div class="input-group-append">
             <button class="btn btn-warning" type="button" id="btn-output">Play</button>
           </div>
         </div>
       </div>
     </div>
-
   </header>
 
-  <main class="d-flex justify-content-center align-items-center">
-    <div class="main_container d-flex flex-wrap justify-content-start">
-    </div>
+  <main class="d-flex flex-column justify-content-center align-items-center">
+    <div class="main_container align-items-center d-flex flex-wrap justify-content-center">
+      <h2>Scegli la difficoltà del gioco!</h2>
+    </div> 
+    <h3 class="lost mt-2">x</h3>
   </main>
-  <footer></footer>
+  <footer>
+    <div class="k_container container-fluid pt-2">Made with &hearts; from Boolean</div>
+  </footer>
 
   <script src="js/script.js"></script>  
 </body>
